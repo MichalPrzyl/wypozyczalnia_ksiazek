@@ -1,11 +1,12 @@
 body{
     --font-color: #CBCBCB;
     --hover-font-color: #eeeeee;
+    --header-bg-color: #414141;
     margin: 0;
     padding: 0;
 }
 .header{
-    background: #414141;
+    background: var(--header-bg-color);
     display: flex;
     justify-content: space-between;
     color: var(--font-color);
