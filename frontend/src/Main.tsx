@@ -1,10 +1,16 @@
 import React from 'react';
+import Header from './header/header';
 
 const Main = () =>{
     return (
     <div>
-        <h1>Witam</h1>
-        <h2>serdecznie</h2>
+       {/*// header component*/} 
+        <Header />
+
+       {/*// serach component*/} 
+
+       {/*// content component*/} 
+
     </div>
     )
 }

@@ -1,0 +1,38 @@
+body{
+    --font-color: #CBCBCB;
+    --hover-font-color: #eeeeee;
+    margin: 0;
+    padding: 0;
+}
+.header{
+    background: #414141;
+    display: flex;
+    justify-content: space-between;
+    color: var(--font-color);
+    height: 10vh;
+}
+
+.header-title, .header-nav{
+    padding-left: 20px;
+    align-items: center;
+    display: flex;
+    padding-right: 20px;
+}
+
+.header-title{
+    font-size: 2vw;
+
+    margin-left: 40px;
+}
+
+.header-nav{
+    font-size: 1.2vw;
+    margin-right: 40px;
+    transition: all 0.5s;
+}
+
+.header-nav:hover{
+    cursor: pointer;
+    color: var(--hover-font-color);
+    transform: scale3d(1.1, 1.1, 1.1);
+}
