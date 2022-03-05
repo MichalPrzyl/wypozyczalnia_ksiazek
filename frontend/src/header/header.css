@@ -9,7 +9,7 @@ body{
     display: flex;
     justify-content: space-between;
     color: var(--font-color);
-    height: 10vh;
+    height: 10%;
 }
 
 .header-title, .header-nav{
@@ -28,7 +28,7 @@ body{
 .header-nav{
     font-size: 1.2vw;
     margin-right: 40px;
-    transition: all 0.5s;
+    transition: all 0.2s;
 }
 
 .header-nav:hover{
