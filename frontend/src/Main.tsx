@@ -3,18 +3,19 @@ import Header from './header/header';
 import Search from './search/search';
 import './main.css'
 
-const Main = () =>{
+const Main = () => {
+
     return (
-    <div className='app-container'>
-       {/*// header component*/} 
-        <Header />
+        <div className='app-container'>
+            {/*// header component*/}
+            <Header />
 
-       {/*// serach component*/} 
-       <Search />
+            {/*// serach component*/}
+            <Search />
 
-       {/*// content component*/} 
+            {/*// content component*/}
 
-    </div>
+        </div>
     )
 }
 
