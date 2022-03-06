@@ -31,7 +31,6 @@ const Main = () => {
             {/*// content component*/}
 
             <div className="books-container">
-                {/* {data.map(el => <li key={el.id}>{el.title}</li>)} */}
                 {data.map(el =>
                     <div className='book-container'>
                         <div>{el.title}</div>
@@ -41,7 +40,6 @@ const Main = () => {
                     </div>
                 )}
             </div>
-            {/* <img src="http://127.0.0.1:8000/media/1.jpg" width="400"/> */}
 
         </div>
     )
