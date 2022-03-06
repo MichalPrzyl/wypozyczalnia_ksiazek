@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './header.css'
 import axios from 'axios';
+
 const Header = () => {
     const openAddModal = () =>{
         console.log("no i wcisnąłeś")
@@ -10,10 +11,9 @@ const Header = () => {
         await axios.get('http://127.0.0.1:8000/book')
     }
 
-
     useEffect(()=>{
         getData();
-    })
+    }, [])
 
     return (
         <div className='header'>

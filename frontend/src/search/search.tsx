@@ -3,6 +3,7 @@ import './search.css'
 // @ts-ignore
 import searchIcon from './lupa.png';
 import axios from 'axios';
+
 interface IProps{
     inputValue: string;
     setInputValue: any;
@@ -31,7 +32,6 @@ const Search = ({inputValue, setInputValue, setData, data}:IProps) => {
 
     useEffect(()=>{
         getData();
-        console.log(data)
     }, [inputValue])
 
     return (
