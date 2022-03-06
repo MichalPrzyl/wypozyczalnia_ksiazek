@@ -33,9 +33,14 @@ const Main = () => {
             <div className="books-container">
                 {data.map(el =>
                     <div className='book-container'>
-                        <div>{el.title}</div>
-                        <div>
-                            <img src={el.img ? `http://127.0.0.1:8000/media/${el.id}.jpg` : `http://127.0.0.1:8000/media/none.jpg`} width="250" />
+                        <div className="book-container-inner">
+                            <div>
+                                <img src={el.img ? `http://127.0.0.1:8000/media/${el.id}.jpg` : `http://127.0.0.1:8000/media/none.jpg`} width="250" />
+                            </div>
+                            <div>Tytuł: {el.title}</div>
+                            <div>Autor: -------</div>
+                            <div className='borrow-btn'>Wypożycz</div>
+                            <div className='options-btn'>Opcje</div>
                         </div>
                     </div>
                 )}

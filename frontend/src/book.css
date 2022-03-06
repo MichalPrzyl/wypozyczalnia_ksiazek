@@ -3,9 +3,50 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
-
+.book-container-inner{
+  /* border: 1px solid black; */
+  border-radius: 40px;
+  overflow: hidden;
+  /* margin-left: 50px; */
+  /* margin-top: 50px; */
+  cursor: pointer;
+  background: #e2e2e2;
+  box-shadow: 0 0 10px 4px #c4c4c4;
+  
+  padding: 35px;
+  margin: 20px;
+  transition: transform 0.3s;
+}
 .book-container{
-    border: 1px solid black;
-    margin-left: 50px;
-    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+
+.book-container img:hover{
+    /* transform: scale3d(1.1, 1.1, 1.1); */
+}
+
+
+.borrow-btn{
+    background: rgb(32, 255, 32);    
+    color: white;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+}
+.options-btn{
+    background: #85A7FF;
+    color: white;
+    width: 50%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    margin: 0 auto;
 }
