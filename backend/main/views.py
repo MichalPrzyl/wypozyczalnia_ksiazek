@@ -11,5 +11,7 @@ class BookGenericAPI(generics.GenericAPIView, mixins.ListModelMixin):
 
 
     def get(self, request):
-        # return self.list(request).data
+        search = request.GET['search']
+        if search:
+            self.queryset = Book.objects.filter(title__icontains=search)            
         return Response(self.list(request).data)
