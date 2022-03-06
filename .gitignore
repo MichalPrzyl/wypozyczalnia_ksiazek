@@ -129,36 +129,37 @@ dmypy.json
 .pyre/
 
 #dependencies
-weblab_frontend/node_modules
-#weblab_frontend/package-lock.json
+frontend/node_modules
+#frontend/package-lock.json
 .pnp
 .pnp.js
 
 #testing
-weblab_frontend/coverage
+frontend/coverage
 
 #production
-weblab_frontend/build
+frontend/build
 
 #misc
-weblab_frontend/npm-debug.log*
+frontend/npm-debug.log*
 
 #docker overriding
 config/docker-compose.override.yml
-weblab_backend/project/__init__.py
+backend/project/__init__.py
 .vscode/settings.json
-weblab_frontend/src/index.tsx
+frontend/src/index.tsx
 .env.development.local
 .vscode/launch.json
-weblab_backend/dashboard/__init__.py
-weblab_backend/media/uploads
-weblab_frontend/.env.development
-weblab_frontend/.env.development.local
+backend/dashboard/__init__.py
+backend/media/uploads
+frontend/.env.development
+frontend/.env.development.local
 config/env
-weblab_frontend/env.local
-weblab_backend_tmp
-weblab_backend/integration/logs/*
-!weblab_backend/integration/logs/.log
+frontend/env.local
+backend_tmp
+backend/integration/logs/*
+!backend/integration/logs/.log
 config/docker-compose.yml
-weblab_backend/**/migrations/*
-!weblab_backend/**/migrations/custom
+backend/**/migrations/*
+!backend/**/migrations/custom
+backend/main/migrations/0002_book_img.py
