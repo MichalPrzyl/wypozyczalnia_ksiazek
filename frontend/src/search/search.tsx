@@ -1,20 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './search.css'
 // @ts-ignore
 import searchIcon from './lupa.png';
+import axios from 'axios';
+interface IProps{
+    inputValue: string;
+    setInputValue: any;
+    setData: Function;
+    data: any[];
+}
 
-const Search = () => {
+const Search = ({inputValue, setInputValue, setData, data}:IProps) => {
 
 
     const handleClickSearch = () => {
-        console.log("Szukam...,")
+        // console.log("Szukam...,")
     }
+
+    const handleInputValueChange = (e:any) =>{
+        setInputValue(e.target.value)
+    }
+
+    const getData = async() =>{
+        const response = await axios.get('http://127.0.0.1:8000/book')
+        setData(response.data)
+    }
+
+    useEffect(()=>{
+        getData();
+        console.log(data)
+    }, [inputValue])
+
     return (
         <div className='search'>
             <div className='search-center'>
                 <div className='search-input-wrapper'>
                     <div className='search-input-wrapper-input'>
-                        <input></input>
+                        <input onChange={handleInputValueChange} value={inputValue}></input>
                     </div>
                     <div className='search-input-wrapper-icon' onClick={handleClickSearch}><img src={searchIcon} /></div>
                 </div>
