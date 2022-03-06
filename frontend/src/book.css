@@ -1,0 +1,11 @@
+.books-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.book-container{
+    border: 1px solid black;
+    margin-left: 50px;
+    margin-top: 50px;
+}
