@@ -23,11 +23,17 @@
     align-items: center;
     /* border: 1px solid black; */
 }
-
+.book-container img{
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
 .book-container img:hover{
     /* transform: scale3d(1.1, 1.1, 1.1); */
 }
 
+.title{
+    color: #797979;
+}
 
 .borrow-btn{
     background: rgb(32, 255, 32);    
@@ -38,6 +44,7 @@
     justify-content: center;
     align-items: center;
     height: 35px;
+    margin-top: 15px;
 }
 .options-btn{
     background: #85A7FF;
