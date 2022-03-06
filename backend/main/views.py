@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from rest_framework import generics, mixins
 
+# Create your views here.
 from main.models import Book
 from main.serializers import BookSerializer
 from rest_framework.response import Response
@@ -11,7 +11,7 @@ class BookGenericAPI(generics.GenericAPIView, mixins.ListModelMixin):
 
 
     def get(self, request):
-        print("to jest get BookGenericAPI")
-        return Response({
-            'data': self.list(request).data
-        })
+        search = request.GET['search']
+        if search:
+            self.queryset = Book.objects.filter(title__icontains=search)            
+        return Response(self.list(request).data)
