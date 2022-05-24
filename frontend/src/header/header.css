@@ -37,3 +37,7 @@ body{
     color: var(--hover-font-color);
     transform: scale3d(1.1, 1.1, 1.1);
 }
+
+.error{
+    color: red;
+}

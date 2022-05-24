@@ -29,7 +29,7 @@ const Header = (props:any) => {
                 <div className='header-nav' onClick={openAddModal}>DODAJ</div>
             </div>
 
-            <ModalAddBook setShow={setShow} show={show} />
+            <ModalAddBook setShow={setShow} show={show} getData={props.getData} />
 
         </>
     )

@@ -8,52 +8,77 @@ import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ModalAddBook = (props: any) => {
+    const [inputTitle, setInputTitle] = useState("");
+    const [inputAuthor, setInputAuthor] = useState("");
+    const [inputFile, setInputFile] = useState(undefined);
+    const [errors, setErrors] = useState("");
     const { show, setShow } = props;
-    const [ inputTitle, setInputTitle ] = useState(""); 
-    const [ inputFile, setInputFile ] = useState();
 
-    const submitData = async(e:any) => {
+    const openModal = () => {
+
+    }
+    const closeModal = () => {
+        setShow(false);
+        setInputTitle("");
+        setInputAuthor("");
+        setInputFile(undefined);
+        setErrors("");
+        props.getData();
+    }
+
+    const submitData = async (e: any) => {
         e.preventDefault();
 
         const formData = new FormData();
-        if(inputFile){
+        if (inputFile) {
             formData.append('cover', inputFile);
         }
         formData.append('title', inputTitle);
+        formData.append('author', inputAuthor);
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/book', formData)
+            closeModal();
+        } catch (err: any) {
+            const errorMsg = err.request.response.split('"')[3]
+            setErrors(errorMsg)
+        }
 
-        await axios.post('http://127.0.0.1:8000/book', formData)
-        setShow(false);
     }
 
-    const handleChangeFile = (e:any) =>{
+    const handleChangeFile = (e: any) => {
         setInputFile(e.target.files[0]);
     }
 
     return <>
         <Modal
             show={show}
-            onHide={() => setShow(false)}
+            onHide={() => closeModal()}
             dialogClassName="modal-90w"
             aria-labelledby="example-custom-modal-styling-title"
         >
             <Modal.Header closeButton>
                 <Modal.Title id="example-custom-modal-styling-title">
-                    Custom Modal Styling
+                    Dodaj książkę
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                Name
-                <input type="text" value={inputTitle} onChange={(e)=>setInputTitle(e.target.value)}></input>
+                <div className="mb-5">Tytuł:
+                <input type="text" className="mx-5" value={inputTitle} onChange={(e) => setInputTitle(e.target.value)}></input></div>
 
-                <input type="file" onChange={handleChangeFile}></input>
+                <div className="mb-5">Autor:
+                <input type="text" className="mx-5" value={inputAuthor} onChange={(e) => setInputAuthor(e.target.value)}></input></div>
+
+                <div>Okładka:</div>
+                <div className="my-1"><input type="file" onChange={handleChangeFile}></input></div>
             </Modal.Body>
 
             <Modal.Footer>
-            <Button variant="secondary" onClick={() => {setShow(false);}} >
-                    Close
+                <div className="error">{errors ? errors : ""}</div>
+                <Button variant="secondary" onClick={() => { closeModal(); }} >
+                    Zamknij
                 </Button>
                 <Button variant="primary" onClick={submitData}>
-                    Save Changes
+                    Dodaj
                 </Button>
             </Modal.Footer>
 

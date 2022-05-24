@@ -9,9 +9,10 @@ interface IProps{
     setInputValue: any;
     setData: Function;
     data: any[];
+    getData: Function;
 }
 
-const Search = ({inputValue, setInputValue, setData, data}:IProps) => {
+const Search = ({inputValue, setInputValue, setData, data, getData}:IProps) => {
 
 
     const handleClickSearch = () => {
@@ -22,16 +23,13 @@ const Search = ({inputValue, setInputValue, setData, data}:IProps) => {
         setInputValue(e.target.value)
     }
 
-    const getData = async() =>{
+    
+
+    useEffect(()=>{
         const params = {
             search: inputValue
         }
-        const response = await axios.get('http://127.0.0.1:8000/book', {params})
-        setData(response.data)
-    }
-
-    useEffect(()=>{
-        getData();
+        getData(params);
     }, [inputValue])
 
     return (
