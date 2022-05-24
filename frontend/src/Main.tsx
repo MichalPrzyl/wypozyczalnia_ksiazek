@@ -9,7 +9,8 @@ const Main = () => {
     interface IData {
         id: number;
         title: string;
-        img: boolean
+        img: boolean;
+        cover: File;
     }
 
     const [data, setData] = useState<IData[]>([])
@@ -18,7 +19,7 @@ const Main = () => {
     return (
         <div className='app-container'>
             {/*// header component*/}
-            <Header />
+            <Header data={data} setData={setData} />
 
             {/*// serach component*/}
             <Search
@@ -35,7 +36,8 @@ const Main = () => {
                     <div className='book-container'>
                         <div className="book-container-inner">
                             <div>
-                                <img src={el.img ? `http://127.0.0.1:8000/media/${el.id}.jpg` : `http://127.0.0.1:8000/media/none.jpg`} width="250" />
+                                {/* <img src={el.img ? `http://127.0.0.1:8000/media/${el.id}.jpg` : `http://127.0.0.1:8000/media/none.jpg`} width="250" /> */}
+                                <img src={el.cover ? `${el.cover}` : `http://127.0.0.1:8000/media/none.jpg`} width="250" height="250"/>
                             </div>
                             <div><span className='title'>Tytuł: </span> {el.title}</div>
                             <div><span className='title'>Autor: </span> -------</div>

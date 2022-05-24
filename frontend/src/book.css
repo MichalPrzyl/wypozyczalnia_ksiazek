@@ -12,7 +12,7 @@
   cursor: pointer;
   background: #e2e2e2;
   box-shadow: 0 0 10px 4px #c4c4c4;
-  
+  /* height: 600px; */
   padding: 35px;
   margin: 20px;
   transition: transform 0.3s;
