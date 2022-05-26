@@ -24,7 +24,6 @@ const ModalDetails = (props: any) => {
     useEffect(() => {
         if (show) {
             getBookData();
-            console.log("useeffect")
         }
     }, [show])
 

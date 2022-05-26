@@ -18,7 +18,7 @@ const Search = ({inputValue, setInputValue, setData, data, getData, setParams}:I
 
 
     const handleClickSearch = () => {
-        // console.log("Szukam...,")
+        // pass
     }
 
     const handleInputValueChange = (e:any) =>{

@@ -18,7 +18,6 @@ const ModalBorrow = (props: any) => {
     const closeModal = () => {
         setInputName("")
         setShow(false);
-        console.log(window.location.search)
         props.getData(props.params);
     }
 

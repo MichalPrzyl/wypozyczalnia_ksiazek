@@ -21,22 +21,13 @@ export interface IData {
 }
 
 const Main = () => {
-
-   
-
+    
     const [data, setData] = useState<IData[]>([]);
     const [inputValue, setInputValue] = useState<string>("");
     const [ showBorrow, setShowBorrow ] = useState(false);
     const [ showDetailsModal, setShowDetailsModal ] = useState(false);
     const [ selectedBookId, setSelectedBookId ] = useState<number>();
     const [ params, setParams ] = useState()
-
-    // useEffect(()=>{
-    //     const element = data.find((el:any)=>el.id=selectedBookId)
-    //     console.log(element)
-    // }, [selectedBookId])
-
-    
 
     const getData = async (params: any = {}) => {
         const response = await axios.get('http://127.0.0.1:8000/book', { params })
