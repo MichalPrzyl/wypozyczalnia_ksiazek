@@ -21,7 +21,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid black; */
 }
 .book-container img{
     margin-bottom: 20px;
@@ -36,7 +35,9 @@
 }
 
 .borrow-btn{
-    background: rgb(11, 170, 11);    
+    background: #0baa0b;   
+    box-shadow: 0 0 7px 2px #0baa0b;
+
     color: white;
     width: 100%;
     border-radius: 20px;
@@ -46,14 +47,60 @@
     height: 35px;
     margin-top: 15px;
 }
-.options-btn{
-    background: #85A7FF;
-    color: white;
-    width: 50%;
+
+.delete-btn{
+    background: transparent;
+    color: black;
+    width: 45%;
     border-radius: 20px;
+    box-shadow: 0 0 7px 2px red;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 35px;
-    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.delete-btn, .borrow-btn, .options-btn{
+    transition: transform 0.2s;
+
+}
+
+.delete-btn:hover, .borrow-btn:hover, .options-btn:hover{
+    transform: scale3d(1.1, 1.1, 1.1);
+    color:white;
+}
+
+.delete-btn:hover{
+    background: red;
+}
+
+.options-btn:hover{
+    background: #5670ff;
+}
+
+.b-btns-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.give-back-btn{
+    background: rgb(115, 129, 255);
+    /* color:black; */
+    box-shadow: 0 0 7px 2px #5670ff;
+
+}
+.options-btn{
+    background: transparent;
+    color: black;
+    width: 45%;
+    border-radius: 20px;
+    box-shadow: 0 0 7px 2px #5670ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 30px;
 }

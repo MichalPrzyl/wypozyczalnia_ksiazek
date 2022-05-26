@@ -35,6 +35,7 @@ const ModalAddBook = (props: any) => {
         }
         formData.append('title', inputTitle);
         formData.append('author', inputAuthor);
+        formData.append('is_available', "true");
         try {
             const response = await axios.post('http://127.0.0.1:8000/book', formData)
             closeModal();

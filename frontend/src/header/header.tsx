@@ -14,13 +14,6 @@ const Header = (props:any) => {
         setShow(true);
     }
 
-    // const getData = async () => {
-    //     const data = await axios.get('http://127.0.0.1:8000/book')
-    // }
-
-    // useEffect(() => {
-    //     getData();
-    // }, [])
 
     return (
         <>

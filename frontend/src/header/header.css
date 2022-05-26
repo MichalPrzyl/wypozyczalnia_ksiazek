@@ -41,3 +41,30 @@ body{
 .error{
     color: red;
 }
+
+.detail-label{
+    /* color: blue; */
+    width: 40%;
+    font-size: 20px;
+}
+
+.detail-value{
+    color:black;
+    font-size: 15px;
+    display: flex;
+    align-items: flex-end;
+    /* text-align: right; */
+    margin: 0 auto;
+}
+
+.detail-record{
+    /* border: 1px solid black; */
+    width: 100%;
+    display: flex;
+    border-bottom: 1px dotted black;
+}
+
+.detail-value, .detail-label{
+/* width: 50%; */
+/* border: 1px solid black; */
+}

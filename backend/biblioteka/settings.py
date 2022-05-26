@@ -31,7 +31,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # Application definition
-
+CSRF_COOKIE_SECURE = False
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

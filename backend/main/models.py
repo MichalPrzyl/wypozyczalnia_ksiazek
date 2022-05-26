@@ -5,6 +5,8 @@ class Book(models.Model):
     author = models.CharField(max_length=400, blank=True)
     img = models.BooleanField(default=False)
     cover = models.ImageField(upload_to='media', null=True)
+    is_available = models.BooleanField(default=True)
+    borrowed_to = models.CharField(max_length=400, blank=True)
 
     def get_last_id(self):
         try:
