@@ -10,9 +10,11 @@ interface IProps{
     setData: Function;
     data: any[];
     getData: Function;
+    params?: string;
+    setParams?: Function;
 }
 
-const Search = ({inputValue, setInputValue, setData, data, getData}:IProps) => {
+const Search = ({inputValue, setInputValue, setData, data, getData, setParams}:IProps) => {
 
 
     const handleClickSearch = () => {
@@ -30,6 +32,9 @@ const Search = ({inputValue, setInputValue, setData, data, getData}:IProps) => {
             search: inputValue
         }
         getData(params);
+        if(setParams){
+            setParams({search: inputValue})
+        }
     }, [inputValue])
 
     return (
@@ -40,14 +45,6 @@ const Search = ({inputValue, setInputValue, setData, data, getData}:IProps) => {
                         <input onChange={handleInputValueChange} value={inputValue}></input>
                     </div>
                     <div className='search-input-wrapper-icon' onClick={handleClickSearch}><img src={searchIcon} /></div>
-                </div>
-
-
-                <div className='search-checkbox-wrapper'>
-                    <div className='search-checkbox-wrapper-checkbox'>
-                        <input type="checkbox"></input>
-                    </div>
-                    <div className='search-checkbox-wrapper-label'>Szukaj wśród niedostępnych</div>
                 </div>
             </div>
         </div>

@@ -18,7 +18,8 @@ const ModalBorrow = (props: any) => {
     const closeModal = () => {
         setInputName("")
         setShow(false);
-        props.getData();
+        console.log(window.location.search)
+        props.getData(props.params);
     }
 
     const submitData = async (e: any) => {
@@ -28,6 +29,7 @@ const ModalBorrow = (props: any) => {
             borrowed_to: inputName,
             is_available: false
         }
+        
         const response = await axios.patch(`http://127.0.0.1:8000/book/${props.selectedBookId}/`, sendState)
 
         closeModal();

@@ -9,6 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { IData } from '../Main';
 
+import { shortenString } from '../helpers';
+
+
 const ModalDetails = (props: any) => {
     const { show, setShow, selectedBookId } = props;
 
@@ -45,7 +48,7 @@ const ModalDetails = (props: any) => {
                 <>
                     {/* <div className='detail-record'><div className='detail-label'>label</div><div className='detail-value'>wartosc</div></div> */}
                     <div className='detail-record'><div className='detail-label'>Id: </div><div className='detail-value'>{selectedBookId}</div></div>
-                    <div className='detail-record'><div className='detail-label'>Tytuł: </div><div className='detail-value'>{bookData?.title}</div></div>
+                    <div className='detail-record'><div className='detail-label'>Tytuł: </div><div className='detail-value'>{shortenString(bookData?.title)}</div></div>
                     <div className='detail-record'><div className='detail-label'>Autor: </div><div className='detail-value'>{bookData?.author}</div></div>
                     <div className='detail-record'><div className='detail-label'>Dostępny: </div><div className='detail-value'>{bookData?.is_available ? 'tak' : 'nie'}</div></div>
                     {!bookData?.is_available ?<div className='detail-record'><div className='detail-label'>Wypożyczony przez:</div><div className='detail-value'>{bookData?.borrowed_to}</div></div>: null}

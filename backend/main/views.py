@@ -4,9 +4,10 @@ from rest_framework import generics, mixins
 from main.models import Book
 from main.serializers import BookSerializer
 from rest_framework.response import Response
+from django.db.models.functions import Lower
 
 class BookGenericAPI(generics.GenericAPIView, mixins.RetrieveModelMixin, mixins.ListModelMixin, mixins.CreateModelMixin, mixins.DestroyModelMixin, mixins.UpdateModelMixin):
-    queryset = Book.objects
+    queryset = Book.objects.order_by('-is_available', Lower('title'))
     serializer_class = BookSerializer
 
 
@@ -15,11 +16,10 @@ class BookGenericAPI(generics.GenericAPIView, mixins.RetrieveModelMixin, mixins.
             return Response({'data': self.retrieve(request, pk).data})
         search = request.GET.get('search')
         if search:
-            self.queryset = Book.objects.filter(title__icontains=search)            
+            self.queryset = Book.objects.filter(title__icontains=search).order_by('-is_available', Lower('title'))
         return Response(self.list(request).data)
 
     def post(self, request):
-        print(request.data)
         return Response(self.create(request).data)
 
     def delete(self, request, pk):

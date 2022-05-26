@@ -7,11 +7,17 @@ import ModalFooter from 'react-bootstrap/Modal'
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+export interface IErrors {
+    title: string;
+}
+
 const ModalAddBook = (props: any) => {
     const [inputTitle, setInputTitle] = useState("");
     const [inputAuthor, setInputAuthor] = useState("");
     const [inputFile, setInputFile] = useState(undefined);
-    const [errors, setErrors] = useState("");
+    // const [errors, setErrors] = useState("");
+    const [errors, setErrors] = useState({} as any);
     const { show, setShow } = props;
 
     const openModal = () => {
@@ -22,8 +28,16 @@ const ModalAddBook = (props: any) => {
         setInputTitle("");
         setInputAuthor("");
         setInputFile(undefined);
-        setErrors("");
+        setErrors({} as IErrors);
         props.getData();
+    }
+
+    const translate = (msg: string) => {
+        if (msg == 'Upload a valid image. The file you uploaded was either not an image or a corrupted image.') {
+            return 'Prześlij odpowiedni obraz. Plik który wysyłasz jest błędny lub nie jest obrazem.'
+        } else if (msg == 'This field may not be blank.'){
+            return 'To pole nie może być puste'
+        }
     }
 
     const submitData = async (e: any) => {
@@ -40,8 +54,11 @@ const ModalAddBook = (props: any) => {
             const response = await axios.post('http://127.0.0.1:8000/book', formData)
             closeModal();
         } catch (err: any) {
-            const errorMsg = err.request.response.split('"')[3]
-            setErrors(errorMsg)
+            const what = err.request.response.split('"')[1]
+            const msg = err.request.response.split('"')[3]
+            const plMsg = translate(msg);
+            if (what == 'title') {setErrors({ title: plMsg })}
+            else if (what == 'cover'){setErrors({ file: plMsg })}
         }
 
     }
@@ -63,18 +80,25 @@ const ModalAddBook = (props: any) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div className="mb-5">Tytuł:
-                <input type="text" className="mx-5" value={inputTitle} onChange={(e) => setInputTitle(e.target.value)}></input></div>
+                <div className='mb-5'>
+                    <div className="">Tytuł:
+                        <input type="text" className="mx-5" value={inputTitle} onChange={(e) => setInputTitle(e.target.value)}></input>
+                    </div>
+                    <span className="err">{errors.title ? <div>{errors.title}</div> : null}</span>
+                </div>
 
                 <div className="mb-5">Autor:
-                <input type="text" className="mx-5" value={inputAuthor} onChange={(e) => setInputAuthor(e.target.value)}></input></div>
+                    <input type="text" className="mx-5" value={inputAuthor} onChange={(e) => setInputAuthor(e.target.value)}></input></div>
 
                 <div>Okładka:</div>
-                <div className="my-1"><input type="file" onChange={handleChangeFile}></input></div>
+                <div className="my-1"><input type="file" onChange={handleChangeFile}></input>
+                <span className="err">{errors.file ? <div>{errors.file}</div> : null}</span>
+
+                </div>
             </Modal.Body>
 
             <Modal.Footer>
-                <div className="error">{errors ? errors : ""}</div>
+                {/* <div className="error">{errors ? errors : ""}</div> */}
                 <Button variant="secondary" onClick={() => { closeModal(); }} >
                     Zamknij
                 </Button>

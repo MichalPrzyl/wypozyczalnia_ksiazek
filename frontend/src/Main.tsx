@@ -7,6 +7,7 @@ import './main.css'
 import './book.css'
 import ModalBorrow from './components/modal-borrow';
 import ModalDetails from './components/modal-details';
+import { shortenString } from './helpers';
 
 
 export interface IData {
@@ -28,6 +29,7 @@ const Main = () => {
     const [ showBorrow, setShowBorrow ] = useState(false);
     const [ showDetailsModal, setShowDetailsModal ] = useState(false);
     const [ selectedBookId, setSelectedBookId ] = useState<number>();
+    const [ params, setParams ] = useState()
 
     // useEffect(()=>{
     //     const element = data.find((el:any)=>el.id=selectedBookId)
@@ -71,7 +73,7 @@ const Main = () => {
                 is_available: true
             }
             await axios.patch(`http://127.0.0.1:8000/book/${id}/`, sendState)
-            getData();
+            getData(params);
         }
     }
 
@@ -97,6 +99,8 @@ const Main = () => {
                 setData={setData}
                 data={data}
                 getData={getData}
+                params={params} 
+                setParams={setParams}
             />
 
             {/*// content component*/}
@@ -109,7 +113,7 @@ const Main = () => {
                                 {/* <img src={el.img ? `http://127.0.0.1:8000/media/${el.id}.jpg` : `http://127.0.0.1:8000/media/none.jpg`} width="250" /> */}
                                 <img src={el.cover ? `${el.cover}` : `http://127.0.0.1:8000/media/none.jpg`} width="250" height="250" />
                             </div>
-                            <div><span className='title'>Tytuł: </span>{el.title}</div>
+                            <div><span className='title'>Tytuł: </span>{shortenString(el.title)}</div>
                             <div><span className='title'>Autor: </span>{el.author}</div>
                             {el.is_available ? (
                                 <div className={`borrow-btn`} onClick={e => handleBorrow(el.id)}>Wypożycz</div>
@@ -124,7 +128,7 @@ const Main = () => {
                     </div>
                 )}
             </div>
-                <ModalBorrow show={showBorrow} setShow={setShowBorrow} selectedBookId={selectedBookId} getData={getData} />
+                <ModalBorrow show={showBorrow} setShow={setShowBorrow} selectedBookId={selectedBookId} getData={getData} params={params} />
                 <ModalDetails 
                     show={showDetailsModal} 
                     setShow={setShowDetailsModal}
